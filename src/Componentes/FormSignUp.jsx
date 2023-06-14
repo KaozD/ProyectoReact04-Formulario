@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField'
 import FormGroup from '@mui/material/FormGroup';
@@ -8,14 +10,32 @@ import Switch from '@mui/material/Switch';
 
 
 function FormSignUp (){
+
+    const [ name, setName ] = useState( '' );
+    useEffect( () => {
+        console.log("Name Cambio: ", name)
+    }, [name] )
+
+    /* useEffect
+    Es un hook que nos mostrara el cambio en tiempo real de algun elemento que nosostros le
+    especifiquemos.
+    */
+
     return (
     <form>
-        <TextField id="name" label="Nombre" variant="outlined" fullWidth margin="normal" />
-        <TextField id="lastName" label="Apellido" variant="outlined" fullWidth margin="normal" />
-        <TextField id="email" label="E-mail" variant="outlined" fullWidth margin="normal" />
+        <TextField id="name" label="Nombre"
+             variant="outlined" fullWidth margin="normal" onChange={ ( e ) => {
+                console.log( e.target.value );
+                setName( e.target.value );
+            }} value={ name } />
+
+        <TextField id="lastName" label="Apellido" 
+            variant="outlined" fullWidth margin="normal" />
+        <TextField id="email" label="E-mail" 
+            variant="outlined" fullWidth margin="normal" />
 
         <FormGroup >
-            
+
             <FormControlLabel control={<Switch defaultChecked />} label="Promociones" />
             <FormControlLabel control={<Switch defaultChecked />} label="Novedades" />
 
