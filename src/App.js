@@ -7,12 +7,17 @@ import Typography from '@mui/material/Typography';
 
 
 function App() {
+
+  const handleSubmit = (valores) => {
+    console.log('App.js:', valores);
+  }
+
   return (
     <Container component="section" maxWidth="sm" >
       <Typography variant="h3" align='center' >
         Formulario Registro
       </Typography>
-      <FormSignUp/> 
+      <FormSignUp handleSubmit={ handleSubmit } /> 
     </Container>
   );
 }
